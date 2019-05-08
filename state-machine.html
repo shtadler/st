@@ -30,6 +30,14 @@
     .slide p.note {
         font-weight: lighter;
     }
+
+    .code-wrap .code-text code {
+        line-height: 1.3;
+        font-size: 22px;
+    }
+    .slide.spaced {
+        padding-top: 20px;
+    }
     </style>
 </head>
 <body class="shower list">
@@ -122,43 +130,67 @@
 <section class="slide">
     <img class="cover" src="pictures/Types-of-Communication.jpg" alt="Orange typewriter on a wooden table close-up">
 </section>
-<section class="slide">
-    <div class=code-wrap">
+
+<section class="slide spaced" id="state-code">
+    <div class="code-wrap">
         <pre class="code-text">
             <code>
+                <span class="code-block f">
 const state = {
     machine: true
 };
-            </code>
-        </pre>
-
-        <pre class="code-text">
-            <code>
+                </span>
+                <span class="code-block s">
 this.setState({machine: true});
-            </code>
-        </pre>
-        <pre class="code-text">
-            <code>
+                </span>
+                <span class="code-block t">
 constructor(private stateMachine:MachineService){}
 ngOnInit() {
     this.stateMachine = true;
 }
+                </span>
             </code>
         </pre>
     </div>
+    <style>
+    #state-code code {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    #state-code .code-block {
+        border: 3px solid white;
+        padding: 0 2rem;
+    }
+
+    #state-code .code-block.f {
+    }
+
+    #state-code .code-block.s {
+        margin-left: 5rem;
+        margin-top: 10rem;
+        margin-bottom: 2rem;
+    }
+
+    </style>
 </section>
 
 <section class="slide">
-    <h2>Serious citations</h2>
+    <h2>Understanding</h2>
     <figure>
         <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+            <p>Understanding the issue - 50% of solution<br>
+            Put a pattern on it - 50% of realisation</p>
         </blockquote>
-        <figcaption>Marcus Tullius Cicero</figcaption>
+        <br>
+        <figcaption class="right">Andrii Shtadler, friendly programmer</figcaption>
     </figure>
+    <style>
+        .right {
+            text-align: right;
+        }
+    </style>
 </section>
 
 <section class="slide">
