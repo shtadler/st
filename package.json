@@ -29,6 +29,7 @@
   "dependencies": {
     "@shower/material": "^2.2.1",
     "@shower/ribbon": "^3.2.2",
+    "jquery": "^3.4.1",
     "shower-core": "^2.1.0"
   },
   "devDependencies": {
