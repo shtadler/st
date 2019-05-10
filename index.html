@@ -6,206 +6,788 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="node_modules/@shower/material/styles/styles.css">
     <style>
-        .shower {
-            --slide-ratio: calc(16 / 9);
-            --color-key: #2196f3;
+    .progress {
+        background-color: var(--color-yellow);
+    }
 
-        }
+    * {
+        box-sizing: border-box;
+    }
+
+    .shower {
+        --slide-ratio: calc(16 / 9);
+        --color-key: #2196f3;
+        --color-black: white;
+        --color-medium: white;
+        --color-light: rgba(255, 255, 255, 0.5);
+    }
+
+    .slide {
+        background: var(--color-key);
+        color: white;
+    }
+
+    .slide p.note {
+        font-weight: lighter;
+    }
+
+    .code-wrap .code-text code {
+        line-height: 1.3;
+        font-size: 22px;
+    }
+
+    .slide.spaced {
+        padding-top: 20px;
+    }
+
+    .btn {
+        text-decoration: none;
+        color: #fff;
+        background-color: #ffc107;
+        text-align: center;
+        letter-spacing: .5px;
+        border: none;
+        border-radius: 0;
+        padding: 5px 10px;
+        text-transform: uppercase;
+        margin: 5px 5px 5px 0;
+        font-weight: bold;
+    }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
 </head>
 <body class="shower list">
 
-    <header class="caption">
-        <h1>Shower Presentation Engine</h1>
-        <p>Yours Truly, Famous Inc.</p>
-    </header>
+<header class="caption">
+    <h1>Andrii Shtadler - dev.meetups()</h1>
+    <p>Why do patterns matter? State Machine</p>
+</header>
 
-    <section class="slide" id="cover">
-        <h2>Shower Presentation Engine</h2>
-        <p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-        <figure>
-            <img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #cover h2 {
-                margin: 30px 0 0;
-                color: white;
-                text-align: center;
-                font-size: 70px;
-            }
+<section class="slide" id="main">
+    <img src="pictures/main-sm.png">
+    <h2>Why do patterns matter?<br>State Machine</h2>
+    <style>
+    #main img {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+    }
 
-            #cover p {
-                margin: 10px 0 0;
-                text-align: center;
-                color: white;
-                font-style: italic;
-                font-size: 20px;
-            }
+    #main h2 {
+        text-align: center;
+    }
+    </style>
+</section>
 
-            #cover p a {
-                color: white;
-            }
-        </style>
-    </section>
+<section class="slide" id="vs">
+    <h2 class="shout">
+        Patterns
+        <br>
+        <span>vs</span>
+        <br>
+        libraries
+    </h2>
+    <style>
+    #vs span {
+        padding-left: 130px;
+    }
+    </style>
+</section>
 
-    <section class="slide">
-        <h2>Shower key features</h2>
-        <ol>
-            <li>Built on HTML, CSS and JavaScript</li>
-            <li>Works in all modern browsers</li>
-            <li>Themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
-        </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
-    </section>
+<section class="slide">
+    <h2>Library</h2>
+    <ul>
+        <li class="next">Can be copied</li>
+        <li class="next">Related to programming language</li>
+        <li class="next">API to resolve particular problem</li>
+        <li class="next">Hard to scale</li>
+        <li class="next">A lot of realisations</li>
+    </ul>
+    <img src="pictures/tools.jpg" class="place right next">
+</section>
 
-    <section class="slide">
-        <h2>Plain text on your slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-    </section>
+<section class="slide" id="patterns">
+    <h2>Pattern</h2>
+    <ul>
+        <li>Cannot be copied</li>
+        <li class="next">Not related to programming language</li>
+        <li class="next">Abstraction without steps to resolve</li>
+        <li class="next">Motivation to resolve problem(s)</li>
+        <li class="next">Declared structures and entities</li>
+        <li class="next">Can be related to another patterns</li>
+    </ul>
+    <img src="pictures/bike-schema.jpg" class="place right next">
+    <style>
+    #patterns img {
+        width: 40%;
+    }
+    </style>
+</section>
 
-    <section class="slide">
-        <h2>Two columns if you like</h2>
-        <div class="columns two">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-        </div>
-    </section>
+<section class="slide">
+    <h2>You already use patterns</h2>
+    <ul>
+        <li class="next">Redux (action/dispatchers) - pub/sub</li>
+        <li class="next">Redux (reducer) - adapter</li>
+        <li class="next">Search bar - strategy</li>
+        <li class="next">Basket - singleton</li>
+        <li class="next">Router - <strong>state machine</strong></li>
+    </ul>
+    <p class="note next">observer, bridge, factory, builder, decorator ....</p>
+</section>
 
-    <section class="slide">
-        <h2>All kind of lists</h2>
-        <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
-        </ol>
-    </section>
+<section class="slide">
+    <h2 class="shout">Why we need to know patterns?</h2>
+</section>
 
-    <section class="slide">
-        <h2>Take care about naming</h2>
+<section class="slide">
+    <img class="cover" src="pictures/communication.jpg" alt="Orange typewriter on a wooden table close-up">
+</section>
 
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-
-    </section>
-
-    <section class="slide">
-        <h2>Code samples</h2>
-        <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code class="mark">&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
+<section class="slide spaced" id="state-code">
+    <div class="code-wrap">
+        <pre class="code-text">
+            <code>
+                <span class="code-block f">
+const state = {
+    machine: true
+};
+                </span>
+                <span class="code-block s">
+this.setState({machine: true});
+                </span>
+                <span class="code-block t">
+constructor(private stateMachine:MachineService){}
+ngOnInit() {
+    this.stateMachine = true;
+}
+                </span>
+            </code>
         </pre>
-    </section>
+    </div>
+    <style>
+    #state-code code {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
 
-    <section class="slide">
-        <h2>Even tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
-    </section>
+    #state-code .code-block {
+        border: 3px solid white;
+        padding: 0 2rem;
+    }
 
-    <section class="slide" id="picture">
-        <h2>Pictures</h2>
-        <figure>
-            <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-            <figcaption class="copyright right white">
-                <a href="http://fiftyfootshadows.net/">© John Carey</a>
-            </figcaption>
-        </figure>
-        <style>
-            #picture h2 {
-                color: white;
-            }
-        </style>
-    </section>
+    #state-code .code-block.f {
+    }
 
-    <section class="slide">
-        <h2 class="shout shrink">You can even shout this way</h2>
-    </section>
+    #state-code .code-block.s {
+        margin-left: 5rem;
+        margin-top: 10rem;
+        margin-bottom: 2rem;
+    }
 
-    <section class="slide">
-        <h2>Inner navigation</h2>
-        <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
-        </ol>
-    </section>
+    </style>
+</section>
 
-    <section class="slide" id="see-more">
-        <h2 class="shout">
-            <img src="pictures/logo.svg" alt="Shower logo">
-            <a href="https://github.com/shower/shower">See more on GitHub</a>
-        </h2>
-        <style>
-            #see-more h2 {
-                font-size: 100px
-            }
+<section class="slide" id="sensei">
+    <h2>Understanding</h2>
+    <figure>
+        <blockquote>
+            <p>Understanding the issue - 50% of solution<br>
+                Put a pattern on it - 50% of realisation</p>
+        </blockquote>
+        <br>
+        <figcaption class="right">Andrii Shtadler, friendly programmer</figcaption>
+    </figure>
+    <img src="pictures/sensei.png" class="place left bottom">
+    <style>
+    #sensei img {
+        width: 30%;
+    }
 
-            #see-more img {
-                width: 0.72em;
-                height: 0.72em;
-            }
-        </style>
-    </section>
+    .right {
+        text-align: right;
+    }
+    </style>
+</section>
 
-    <footer class="badge">
-        <a href="https://github.com/shower/shower">Fork me on GitHub</a>
-    </footer>
+<section class="slide">
+    <h2 class="shout">What is this <br> <strong>State Machine</strong></h2>
+</section>
 
-    <div class="progress"></div>
+<section class="slide spaced" id="state-machine">
+    <div class="state-message">
+    </div>
+    <div class="state-frame active show state-1">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <button class="btn" style="background: #ff9800;">Purchase</button>
+    </div>
+    <div class="state-frame state-2">
+        <div class="frame-title">Selected items (2)</div>
+        <div style="display: flex">
+            <select style="width: 50%" class="btn">
+                <option selected>Card</option>
+                <option value="1">#**** *** **</option>
+            </select>
+            or &nbsp;
+            <button style="width: 50%" class="btn btn-new-card">Add new card</button>
+        </div>
+        <div style="display: flex; margin-bottom: 10px">
+            <select style="width: 50%" class="btn">
+                <option selected>Location</option>
+                <option value="1">Vinnytsia</option>
+            </select>
+            or &nbsp;
+            <button style="width: 50%" class="btn btn-new-location">Add location</button>
+        </div>
+        <button class="btn btn-back" style="float: left; background: #ff9800;">Back</button>
+        <button class="btn btn-next" style="float: right; background: #ff9800;">Next</button>
+    </div>
+    <div class="state-wrap" style="display: none">
+        <div class="state-frame state-3">
+            <div class="frame-title">Add card</div>
+            <div>
+                <input type="text">
+            </div>
+            <button class="btn btn-save" style="float: right; background: #ff9800;">Save</button>
+            <button class="btn btn-add-more" style="float: right">Add one more</button>
+        </div>
+        <div class="state-frame state-4">
+            <div class="frame-title">Location</div>
+            <div>
+                <input type="text">
+            </div>
+            <button class="btn btn-save" style="float: right; background: #ff9800;">Save</button>
+            <button class="btn btn-add-more" style="float: right">Add one more</button>
+        </div>
+    </div>
+    <div class="state-frame state-5">
+        Ok
+    </div>
+    <style>
 
-    <script src="node_modules/shower-core/shower.min.js"></script>
-    <!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+    #state-machine .frame-title {
+        line-height: 1.2;
+        text-align: center;
+    }
 
+    #state-machine input {
+        width: 100%;
+    }
+
+    #state-machine .state-frame {
+        padding: 10px;
+        border: 1px solid white;
+        display: none;
+        transition: flex 0.4s ease;
+    }
+
+    #state-machine .state-frame.active {
+        transition: box-shadow 0.4s ease;
+        box-shadow: 0 0px 0px 6px rgba(255, 255, 255, 0.8);
+    }
+
+    #state-machine .state-frame.show {
+        display: block;
+    }
+
+    #state-machine {
+        font-size: 1rem;
+        padding-bottom: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #state-machine .state-wrap {
+        height: 100%;
+        display: flex;
+        transition: flex 0.4s ease;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #state-machine .state-5 {
+        background: #4caf50;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #state-machine .state-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 30px 5px 40px;
+        line-height: 1;
+        background: #000;
+        width: 240px;
+    }
+
+    #state-machine .state-message .message {
+        color: #ff9800;
+        display: block;
+    }
+    </style>
+    <script>
+
+    const $smSlide = $('#state-machine')
+    const $smMessage = $smSlide.find('.state-message')
+    const $smFrames = $smSlide.find('.state-frame')
+    const $smPurchase = $smSlide.find('.state-1')
+    const $smSelectItem = $smSlide.find('.state-2')
+    const $smAddCard = $smSlide.find('.state-3')
+    const $smAddLocation = $smSlide.find('.state-4')
+    const $smOk = $smSlide.find('.state-5')
+    const $smWrap = $smSlide.find('.state-wrap')
+
+    function cSm () {
+        $smFrames.removeClass('active')
+    }
+
+    function mSm (text) {
+        const c = $('<span></span>').addClass('message').text(text)
+        $smMessage.append(c)
+        setTimeout(() => {
+            c.fadeOut(2000, () => c.remove())
+        }, 5000)
+    }
+
+    $smPurchase.find('.btn')
+    .click(() => {
+        cSm();
+        mSm('next -> "buyItem"');
+        $smSelectItem.fadeIn().addClass('active show')
+    })
+
+    $smSelectItem.find('.btn-back')
+    .click(() => {
+        cSm();
+        mSm('next -> "purchase"')
+        $smPurchase.addClass('active')
+    })
+
+    $smSelectItem.find('.btn-next')
+    .click(() => {
+        cSm();
+        mSm('next -> "OK"')
+        $smOk.fadeIn()
+        .addClass('active show')
+    })
+
+    $smSelectItem.find('.btn-new-card')
+    .click(() => {
+        cSm();
+        mSm('next -> "cardForm"')
+        $smWrap.show()
+        $smAddCard.fadeIn()
+        .addClass('active show')
+    })
+
+    $smSelectItem.find('.btn-new-location')
+    .click(() => {
+        cSm();
+        mSm('next -> "locationForm"')
+        $smWrap.show()
+        $smAddLocation.fadeIn()
+        .addClass('active show')
+    })
+
+    $smSlide.find('.btn-add-more')
+    .click((e) => {
+        cSm();
+        setTimeout(() => {
+            $(e.target)
+            .parents('.state-frame')
+            .addClass('active')
+            .find('input')
+            .val('')
+        }, 200)
+    })
+    $smSlide.find('.btn-save')
+    .click((e) => {
+        cSm();
+        mSm('next -> "buyItem"')
+        $smSelectItem.addClass('active')
+    })
+    </script>
+</section>
+<section class="slide spaced" id="state-advanced">
+    <div class="state-message">
+    </div>
+    <button class="btn got-to-start abs">GO TO START</button>
+    <div class="state-frame active show state-1">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <button class="btn" style="background: #ff9800;">Purchase</button>
+    </div>
+    <div class="state-frame state-2">
+        <div class="frame-title">Selected items (2)</div>
+        <div style="display: flex">
+            <select style="width: 50%" class="btn">
+                <option selected>Card</option>
+                <option value="1">#**** *** **</option>
+            </select>
+            or &nbsp;
+            <button style="width: 50%" class="btn btn-new-card">Add new card</button>
+        </div>
+        <div style="display: flex; margin-bottom: 10px">
+            <select style="width: 50%" class="btn">
+                <option selected>Location</option>
+                <option value="1">Vinnytsia</option>
+            </select>
+            or &nbsp;
+            <button style="width: 50%" class="btn btn-new-location">Add location</button>
+        </div>
+        <button class="btn btn-back" style="float: left; background: #ff9800;">Back</button>
+        <button class="btn btn-next" style="float: right; background: #ff9800;">Next</button>
+    </div>
+    <div class="state-wrap" style="display: none">
+        <div class="state-frame state-3">
+            <div class="frame-title">Add card</div>
+            <div>
+                <input type="text">
+            </div>
+            <button class="btn btn-save" style="float: right; background: #ff9800;">Save</button>
+            <button class="btn btn-add-more" style="float: right">Add one more</button>
+        </div>
+        <div class="state-frame state-4">
+            <div class="frame-title">Location</div>
+            <div>
+                <input type="text">
+            </div>
+            <button class="btn btn-save" style="float: right; background: #ff9800;">Save</button>
+            <button class="btn btn-add-more" style="float: right">Add one more</button>
+        </div>
+    </div>
+    <div class="state-frame state-5">
+        Ok
+        <button class="btn got-to-start">GO TO START</button>
+    </div>
+    <style>
+
+    #state-advanced .frame-title {
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    #state-advanced input {
+        width: 100%;
+    }
+
+    #state-advanced .state-frame {
+        padding: 10px;
+        border: 1px solid white;
+        display: none;
+        transition: flex 0.4s ease;
+    }
+
+    #state-advanced .state-frame.active {
+        transition: box-shadow 0.4s ease;
+        box-shadow: 0 0px 0px 6px rgba(255, 255, 255, 0.8);
+    }
+
+    #state-advanced .state-frame.show {
+        display: block;
+    }
+
+    #state-advanced {
+        font-size: 1rem;
+        padding-bottom: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #state-advanced .state-wrap {
+        height: 100%;
+        display: flex;
+        transition: flex 0.4s ease;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #state-advanced .state-5 {
+        background: #4caf50;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    #state-advanced .state-message {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 30px 5px 40px;
+        line-height: 1;
+        background: #000;
+        width: 240px;
+    }
+
+    #state-advanced .state-message .message {
+        color: #ff9800;
+        display: block;
+    }
+    #state-advanced .got-to-start {
+        display: block;
+    }
+    #state-advanced .got-to-start.abs {
+        position: absolute;
+        right: 40px;
+        top: 30px;
+    }
+    </style>
+    <script>
+
+    const $saSlide = $('#state-advanced')
+    const $saMessage = $saSlide.find('.state-message')
+    const $saFrames = $saSlide.find('.state-frame')
+    const $saPurchase = $saSlide.find('.state-1')
+    const $saSelectItem = $saSlide.find('.state-2')
+    const $saAddCard = $saSlide.find('.state-3')
+    const $saAddLocation = $saSlide.find('.state-4')
+    const $saOk = $saSlide.find('.state-5')
+    const $saWrap = $saSlide.find('.state-wrap')
+
+    function c () {
+        $saFrames.removeClass('active')
+    }
+
+    function m (text) {
+        const c = $('<span></span>')
+        .addClass('message')
+        .text(text)
+        $saMessage.append(c)
+        setTimeout(() => {
+            c.fadeOut(2000, () => c.remove())
+        }, 5000)
+    }
+
+    $saPurchase.find('.btn')
+    .click(() => {
+        c()
+        m('next -> "buyItem"')
+        $saSelectItem.fadeIn()
+        .addClass('active show')
+    })
+
+    $saSelectItem.find('.btn-back')
+    .click(() => {
+        c()
+        m('next -> "purchase"')
+        $saPurchase.addClass('active')
+    })
+
+    $saSelectItem.find('.btn-next')
+    .click(() => {
+        c()
+        m('next -> "OK"')
+        $saOk.fadeIn()
+        .addClass('active show')
+    })
+
+    $saSelectItem.find('.btn-new-card')
+    .click(() => {
+        c()
+        m('next -> "cardForm"')
+        $saWrap.show()
+        $saAddCard.fadeIn()
+        .addClass('active show')
+    })
+
+    $saSelectItem.find('.btn-new-location')
+    .click(() => {
+        c()
+        m('next -> "locationForm"')
+        $saWrap.show()
+        $saAddLocation.fadeIn()
+        .addClass('active show')
+    })
+
+    $saSlide.find('.btn-add-more')
+    .click((e) => {
+        c()
+        setTimeout(() => {
+            $(e.target)
+            .parents('.state-frame')
+            .addClass('active')
+            .find('input')
+            .val('')
+        }, 200)
+    })
+    $saSlide.find('.btn-save')
+    .click((e) => {
+        c()
+        m('next -> "buyItem"')
+        $saSelectItem.addClass('active')
+    })
+    $saSlide.find('.got-to-start').click(() => {
+        c()
+        m('next -> "purchase"')
+        $saPurchase.addClass('active')
+    });
+    </script>
+</section>
+<section class="slide spaced" id="picture">
+    <h2>Scheme</h2>
+    <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
+    <style>
+    #picture h2 {
+        color: white;
+    }
+    </style>
+</section>
+
+<section class="slide">
+    <h2 class="shout shrink">Finite <br> State Machine</h2>
+</section>
+
+<section class="slide">
+    <h2>Finite machine is like a slider</h2>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="bg red">&times;&larr; <mark>0</mark> &larr; State &rarr; <mark>1</mark> &rarr; #2</div></div>
+            <div class="swiper-slide"><div class="bg yellow">#1&larr; <mark>0</mark> &larr; State #1 &rarr; <mark>1</mark> &rarr; #3</div></div>
+            <div class="swiper-slide"><div class="bg green">#2&larr; <mark>0</mark> &larr; State #1 &rarr; <mark>1</mark> &rarr; &times;</div></div>
+        </div>
+    </div>
+    <div class="swiper-button-prev"><</div>
+    <div class="swiper-button-next">></div>
+    <style>
+    .swiper-container {
+        height: 300px;
+    }
+    .swiper-slide {
+        position: relative;
+    }
+    .swiper-slide .bg{
+        font-weight: bold;
+        font-size: 60px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .swiper-slide .bg.yellow {
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #ffc107 49.9%, #ffc107 60%, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(45deg, #ffc107 10%, rgba(0, 0, 0, 0) 10%);
+        background-size: 0.5em 0.5em;
+    }
+    .swiper-slide .bg.red {
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, red 49.9%, red 60%, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(45deg, red 10%, rgba(0, 0, 0, 0) 10%);
+        background-size: 0.5em 0.5em;
+    }
+    .swiper-slide .bg.green {
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, #37ff2b 49.9%, #37ff2b 60%, rgba(0, 0, 0, 0) 60%),
+        linear-gradient(45deg, #37ff2b 10%, rgba(0, 0, 0, 0) 10%);
+        background-size: 0.5em 0.5em;
+    }
+    .swiper-button-next, .swiper-button-prev {
+        font-weight: bold;
+        background: white;
+        color: var(--color-key);
+        width: 40px;
+        height: 70px;
+        text-align: center;
+        font-size: 60px;
+        line-height: 1;
+    }
+    .swiper-button-prev {
+        left: 50px;
+    }
+    .swiper-button-next {
+        right: 50px;
+    }
+    </style>
+    <script>
+    const mySwiper = new Swiper('.swiper-container', {
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
+    })
+    </script>
+</section>
+
+<section class="slide spaced">
+    <h2>Scheme</h2>
+    <img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
+</section>
+
+<section class="slide">
+    <h2 class="shout">History <br> State Machine?</h2>
+</section>
+
+<section class="slide spaced" id="history-sm">
+    <h2>History stack is not new!</h2>
+    <div style="display: flex; justify-content: center">
+        <button class="btn step-btn">step #1</button>
+        <button class="btn step-btn">step #2</button>
+        <button class="btn step-btn">step #3</button>
+        <button class="btn step-btn">step #4</button>
+        <button class="btn step-btn">step #5</button>
+    </div>
+    <div class="history-frame">
+
+    </div>
+
+    <div style="display: flex; justify-content: center">
+        <button class="btn history-prev">Prev</button>
+    </div>
+
+    <style>
+        .history-frame {
+            margin-top: 20px;
+            height: 250px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, rgba(0, 0, 0, 0) 49.9%, rgba(255,255,255, 0.4) 49.9%, rgba(255,255,255, 0.4) 60%, rgba(0, 0, 0, 0) 60%),
+            linear-gradient(45deg, rgba(255,255,255, 0.4) 10%, rgba(0, 0, 0, 0) 10%);
+            background-size: 0.5em 0.5em;
+            text-align: center;
+            line-height: 250px;
+            font-size: 60px;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        const $stateBtns = $('.step-btn');
+        const $hFrame = $('.history-frame');
+        const $pr = $('.history-prev');
+
+        const history = [];
+        let last;
+        $stateBtns.click(e => {
+            const t = $(e.target).text();
+            $hFrame.text(t);
+            history.push(last);
+            last = t;
+        });
+        $pr.click(() => {
+            const prev = history.pop();
+            if (prev) $hFrame.text(prev);
+        })
+    </script>
+</section>
+
+<section class="slide">
+    <h2 class="shout">Thanks</h2>
+</section>
+
+<div class="progress"></div>
+
+<script src="node_modules/shower-core/shower.min.js"></script>
+<!-- Copyright © 3000 Yours Truly, Famous Inc. -->
 </body>
 </html>
